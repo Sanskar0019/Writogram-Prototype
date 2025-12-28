@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: #FDFCFB;
+  --color-foreground: #1A1A1A;
+  --color-accent: #dcff0d;
+
+  /* Explicitly map font tokens */
+  --font-serif: var(--font-croissant);
+  --font-sans: var(--font-dm-sans);
+
+  /* Map mono to sans to prevent any accidental mono usage */
+  --font-mono: var(--font-dm-sans);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  /* Force default font to DM Sans */
+  font-family: var(--font-dm-sans);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Force headings to Serif (Croissant One) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-croissant);
+  font-weight: 400;
+  /* Croissant One is typically 400 */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Force body and interactive elements to Sans (DM Sans) */
+body,
+p,
+span,
+div,
+a,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-dm-sans);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Exception: Classes that explicitly ask for Serif */
+.font-serif {
+  font-family: var(--font-croissant) !important;
+}
+
+/* Exception: Classes that explicitly ask for Sans */
+.font-sans {
+  font-family: var(--font-dm-sans) !important;
 }
