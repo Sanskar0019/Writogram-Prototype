@@ -11,7 +11,7 @@ const navLinks = [
     { name: "Approach", href: "#approach" },
     { name: "Services", href: "#services" },
     { name: "Resources", href: "#resources" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/contact" },
 ];
 
 export function Header() {
@@ -85,6 +85,11 @@ export function Header() {
                                 <ArrowRight className="w-3 h-3" />
                             </div>
                         </Link>
+                    </div>
+
+
+                    {/* Theme Toggle */}
+                    <div className="hidden md:flex items-center ml-4">
                     </div>
 
                     {/* Mobile Toggle */}

@@ -1,8 +1,44 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export function ContactSection() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        const formData = new FormData(e.currentTarget);
+        const data = {
+            name: formData.get("name"),
+            brand: formData.get("brand"),
+            email: formData.get("email"),
+            website: formData.get("marketplace"),
+            message: formData.get("message"),
+        };
+
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+
+            if (!res.ok) throw new Error("Failed to send");
+
+            toast.success("Message sent! We'll be in touch soon.");
+            (e.target as HTMLFormElement).reset();
+        } catch (error) {
+            console.error(error);
+            toast.error("Failed to send message. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <section className="flex flex-col bg-[#1A1A1A] md:flex-row min-h-screen">
 
@@ -65,6 +101,7 @@ export function ContactSection() {
                     </motion.div>
 
                     <motion.form
+                        onSubmit={handleSubmit}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -76,7 +113,9 @@ export function ContactSection() {
                                 <label htmlFor="name" className="text-xs uppercase tracking-wider text-gray-500">Name</label>
                                 <input
                                     type="text"
+                                    name="name"
                                     id="name"
+                                    required
                                     className="w-full bg-transparent border-b border-gray-700 py-3 text-lg text-white placeholder-gray-600 focus:outline-none focus:border-[#dcff0d] transition-colors"
                                     placeholder="Your name"
                                 />
@@ -85,6 +124,7 @@ export function ContactSection() {
                                 <label htmlFor="brand" className="text-xs uppercase tracking-wider text-gray-500">Brand / Company</label>
                                 <input
                                     type="text"
+                                    name="brand"
                                     id="brand"
                                     className="w-full bg-transparent border-b border-gray-700 py-3 text-lg text-white placeholder-gray-600 focus:outline-none focus:border-[#dcff0d] transition-colors"
                                     placeholder="Brand name"
@@ -96,7 +136,9 @@ export function ContactSection() {
                             <label htmlFor="email" className="text-xs uppercase tracking-wider text-gray-500">Email</label>
                             <input
                                 type="email"
+                                name="email"
                                 id="email"
+                                required
                                 className="w-full bg-transparent border-b border-gray-700 py-3 text-lg text-white placeholder-gray-600 focus:outline-none focus:border-[#dcff0d] transition-colors"
                                 placeholder="name@company.com"
                             />
@@ -106,6 +148,7 @@ export function ContactSection() {
                             <label htmlFor="marketplace" className="text-xs uppercase tracking-wider text-gray-500">Amazon Marketplace (Optional)</label>
                             <input
                                 type="text"
+                                name="marketplace"
                                 id="marketplace"
                                 className="w-full bg-transparent border-b border-gray-700 py-3 text-lg text-white placeholder-gray-600 focus:outline-none focus:border-[#dcff0d] transition-colors"
                                 placeholder="e.g. US, UK, DE"
@@ -115,7 +158,9 @@ export function ContactSection() {
                         <div className="space-y-2">
                             <label htmlFor="message" className="text-xs uppercase tracking-wider text-gray-500">Challenge / Goal</label>
                             <textarea
+                                name="message"
                                 id="message"
+                                required
                                 rows={4}
                                 className="w-full bg-transparent border-b border-gray-700 py-3 text-lg text-white placeholder-gray-600 focus:outline-none focus:border-[#dcff0d] transition-colors resize-none"
                                 placeholder="A short note about your product or challenge..."
@@ -123,9 +168,22 @@ export function ContactSection() {
                         </div>
 
                         <div className="pt-8 flex flex-col items-start gap-4">
-                            <button type="submit" className="group flex items-center gap-3 bg-[#dcff0d] text-black px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform duration-300">
-                                Start the conversation
-                                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="group flex items-center gap-3 bg-[#dcff0d] text-black px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {isSubmitting ? (
+                                    <>
+                                        <Loader2 className="w-5 h-5 animate-spin" />
+                                        Sending...
+                                    </>
+                                ) : (
+                                    <>
+                                        Start the conversation
+                                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                    </>
+                                )}
                             </button>
                             <span className="text-xs text-gray-500">
                                 We typically respond within 1–2 working days.

@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+
 import Image from "next/image";
 
 const steps = [
@@ -20,8 +20,8 @@ const steps = [
         text: "Design layouts and copy systems"
     },
     {
-        type: "icon",
-        icon: Sparkles,
+        type: "image",
+        src: "/images/process/refine.png",
         text: "Refine for clarity and consistency"
     }
 ];
@@ -100,21 +100,14 @@ export function ProcessSection() {
                                         {/* Accent Border on Hover */}
                                         <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[#dcff0d] transition-colors duration-500" />
 
-                                        {step.type === "image" && step.src ? (
-                                            <div className="relative w-16 h-16 transition-transform duration-500 group-hover:scale-110">
-                                                <Image
-                                                    src={step.src}
-                                                    alt={step.text}
-                                                    fill
-                                                    className="object-contain p-2"
-                                                />
-                                            </div>
-                                        ) : (
-                                            <div className="w-12 h-12 flex items-center justify-center text-black group-hover:text-[#dcff0d] transition-colors duration-300">
-                                                {/* Fallback for the 4th icon */}
-                                                {step.icon && <step.icon strokeWidth={1.5} size={48} />}
-                                            </div>
-                                        )}
+                                        <div className="relative w-16 h-16 transition-transform duration-500 group-hover:scale-110">
+                                            <Image
+                                                src={step.src}
+                                                alt={step.text}
+                                                fill
+                                                className="object-contain p-2"
+                                            />
+                                        </div>
                                     </div>
                                     {/* Blob effect on hover */}
                                     <div className="absolute inset-0 bg-[#dcff0d] rounded-3xl blur-xl -z-10 scale-50 opacity-0 group-hover:scale-110 group-hover:opacity-20 transition-all duration-500" />

@@ -21,17 +21,20 @@ export const metadata: Metadata = {
   description: "Crafting stories buyers understand. We design Amazon A+ content, Brand Stores, and brand storytelling systems.",
 };
 
+import { Toaster } from "sonner";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
-        className={`${croissant.variable} ${dmSans.variable} font-sans antialiased`}
+        className={`${croissant.variable} ${dmSans.variable} font-sans antialiased text-gray-900 bg-white`}
       >
         {children}
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );
