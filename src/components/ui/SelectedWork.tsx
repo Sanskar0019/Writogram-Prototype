@@ -6,26 +6,26 @@ import { useRef, useState } from "react";
 const workItems = [
     {
         type: "Brand Store",
-        title: "Home Essentials",
+        title: "Bioart",
         descriptor: "Calm, navigable, and consistent.",
         cta: "View Store",
-        image: "/api/placeholder/600/400",
+        image: "/images/selectedworks/1.png",
         color: "#fffaeb"
     },
     {
-        type: "Amazon A+",
-        title: "Kitchen Appliances",
+        type: "Brand Store",
+        title: "Brewey Coffee",
         descriptor: "Clarity over clutter.",
         cta: "View Content",
-        image: "/api/placeholder/600/400",
+        image: "/images/selectedworks/2.png",
         color: "#f0fdf4"
     },
     {
-        type: "Premium A+",
-        title: "Fitness Equipment",
+        type: "Brand Store",
+        title: "Island",
         descriptor: "Comparison tables & lifestyle visuals.",
         cta: "View Premium",
-        image: "/api/placeholder/600/400",
+        image: "/images/selectedworks/3.png",
         color: "#eff6ff"
     },
     {

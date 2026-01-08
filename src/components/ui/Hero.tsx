@@ -7,7 +7,7 @@ import { CreativeButton } from "./CreativeButton";
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen w-full flex flex-col items-center justify-center pt-28 pb-20 overflow-hidden bg-background rounded-b-[10rem] border-b-3 border-[#dcff0d]">
+        <section className="relative min-h-screen w-full flex flex-col items-center justify-center pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden bg-background rounded-b-[5rem] md:rounded-b-[10rem] border-b-3 border-[#dcff0d]">
 
             {/* Background radial gradient for subtle depth */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] bg-[radial-gradient(circle_at_center,rgba(212,231,98,0.08)_0%,transparent_70%)] pointer-events-none" />
@@ -19,7 +19,7 @@ export default function Hero() {
                 <div className="mb-6 mix-blend-darken">
                     <TextReveal
                         text="Narrative Artists"
-                        className="font-serif text-6xl md:text-8xl lg:text-[9rem] leading-none text-foreground tracking-tight"
+                        className="font-serif text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] leading-none text-foreground tracking-tight"
                         delay={0.1}
                     />
                 </div>
@@ -31,7 +31,7 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
                 >
-                    Crafting stories that <span className="font-semibold border-b-2 border-[#dcff0d] text-gray-800 rounded-2xl bg-[#dcff0d] p-2">buyers understand.</span>
+                    Crafting stories that <br className="block md:hidden " /> <span className="font-semibold border-b-2 border-[#dcff0d] text-gray-800 rounded-2xl bg-[#dcff0d] p-2">buyers understand.</span>
                 </motion.div>
 
                 <motion.p
@@ -51,9 +51,15 @@ export default function Hero() {
                 >
                     <CreativeButton text="View Transformations" />
 
-                    <button className="px-8 py-4 border border-gray-800 text-gray-800 font-medium rounded-full hover:bg-gray-50 transition-colors">
-                        Our Approach
-                    </button>
+                    <motion.button
+                        className="px-8 py-4 border border-gray-800 text-gray-800 font-medium rounded-full relative overflow-hidden group"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    >
+                        <span className="relative z-10 group-hover:text-black transition-colors duration-300">Our Approach</span>
+                        <div className="absolute inset-0 bg-[#dcff0d] transform scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom     duration-300 ease-out" />
+                    </motion.button>
                 </motion.div>
 
                 <motion.p
@@ -68,13 +74,13 @@ export default function Hero() {
             </div>
 
             {/* Visual Composition - Floating Cards */}
-            <div className="relative w-full max-w-[1400px] h-[600px] mt-12 md:mt-20 mx-auto pointer-events-none">
+            <div className="hidden md:block relative w-full max-w-[1400px] h-[600px] mt-12 md:mt-20 mx-auto pointer-events-none">
 
                 {/* Card 1: Left Top - A+ Content */}
                 <FloatingCard
                     src="/mockup-1.png"
                     alt="Amazon A+ Content Mockup"
-                    className="left-[5%] top-0 md:left-[10%] md:top-10 z-20"
+                    className="left-[2%] top-10 w-[180px] md:w-auto md:left-[10%] md:top-10 z-20"
                     rotation={-6}
                     depth={0.8}
                 />
@@ -83,7 +89,7 @@ export default function Hero() {
                 <FloatingCard
                     src="/mockup-2.png"
                     alt="Brand Store Mockup"
-                    className="right-[5%] top-12 md:right-[5%] md:top-0 z-10 w-[350px]"
+                    className="right-[2%] top-20 w-[200px] md:w-[350px] md:right-[5%] md:top-0 z-10"
                     rotation={6}
                     depth={1.2}
                 />
@@ -92,7 +98,7 @@ export default function Hero() {
                 <FloatingCard
                     src="/mockup-3.png"
                     alt="Storytelling Component"
-                    className="left-[15%] top-80 md:left-[20%] md:top-96 z-30"
+                    className="left-[5%] top-[20rem] w-[150px] md:w-auto md:left-[20%] md:top-96 z-30"
                     rotation={3}
                     depth={1.5}
                 />
@@ -101,7 +107,7 @@ export default function Hero() {
                 <FloatingCard
                     src="/mockup-4.png"
                     alt="Product Detail Feature"
-                    className="right-[15%] top-72 md:right-[25%] md:top-80 z-20"
+                    className="right-[5%] top-[18rem] w-[160px] md:w-auto md:right-[25%] md:top-80 z-20"
                     rotation={-4}
                     depth={0.5}
                 />

@@ -143,7 +143,7 @@ export function Header() {
                     }}
                     transition={{ delay: 0.3 }}
                 >
-                    <Link href="#start" className="mt-8 px-8 py-4 bg-[#1A1A1A] text-white rounded-full font-sans text-sm uppercase tracking-widest" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Link href="#start" className="mt-8 px-10 py-5 bg-[#1A1A1A] text-white rounded-full font-sans text-base uppercase tracking-widest" onClick={() => setIsMobileMenuOpen(false)}>
                         Book a call
                     </Link>
                 </motion.div>

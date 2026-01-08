@@ -70,7 +70,7 @@ function ServiceCard({ service, index }: { service: any, index: number }) {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         viewport={{ once: true, margin: "-10%" }}
-        className={`relative w-[95vw] md:w-[1000px] h-auto md:h-[600px] rounded-3xl overflow-hidden border shadow-2xl ${service.bgClass}`}
+        className={`relative w-[90vw] md:w-[1000px] h-auto md:h-[600px] rounded-3xl overflow-hidden border shadow-2xl ${service.bgClass}`}
       >
         <div className="flex flex-col md:flex-row h-full">
           {/* Left Column: Content */}
@@ -175,7 +175,7 @@ export function ServiceSection() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ margin: "-20%" }}
-              className="w-[95vw] md:w-[1000px] h-[50vh] md:h-[400px] rounded-3xl bg-gray-900 text-white p-12 flex flex-col items-center justify-center text-center space-y-8 shadow-2xl"
+              className="w-[90vw] md:w-[1000px] h-[50vh] md:h-[400px] rounded-3xl bg-gray-900 text-white p-8 md:p-12 flex flex-col items-center justify-center text-center space-y-8 shadow-2xl"
             >
               <h3 className="text-3xl md:text-5xl font-bold max-w-xl">
                 See how these come together

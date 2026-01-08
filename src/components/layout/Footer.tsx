@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="bg-[#1A1A1A] text-white pt-20 md:pt-32 flex flex-col justify-between min-h-[80vh] relative overflow-hidden rounded-tl-4xl">
+        <footer className="bg-[#1A1A1A] text-white pt-20 md:pt-32 flex flex-col justify-between min-h-[80vh] relative overflow-hidden ">
 
             {/* Top Content */}
             <div className="container mx-auto px-6 md:px-12 max-w-7xl mb-24 md:mb-32">
@@ -104,7 +104,7 @@ export function Footer() {
                 </div>
 
                 {/* Massive Text */}
-                <h1 className="text-[15vw] md:text-[18vw] leading-[0.75] font-black tracking-tighter text-white group-hover:text-black text-center select-none pointer-events-none transform translate-y-2 md:translate-y-4 transition-colors duration-500">
+                <h1 className="text-[18vw] md:text-[18vw] leading-[0.75] font-black tracking-tighter text-white group-hover:text-black text-center select-none pointer-events-none transform translate-y-2 md:translate-y-4 transition-colors duration-500">
                     NARRATIVE
                 </h1>
             </div>

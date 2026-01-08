@@ -142,7 +142,7 @@ export function ProcessSection() {
                             initial={{ scale: 0.8, opacity: 0 }}
                             whileInView={{ scale: 1, opacity: 1 }}
                             transition={{ duration: 1, type: "spring" }}
-                            className="text-[10rem] md:text-[14rem] font-serif leading-none tracking-tighter text-black group-hover:text-transparent group-hover:stroke-[#dcff0d] group-hover:stroke-2 transition-all duration-500 bg-clip-text"
+                            className="text-[6rem] sm:text-[8rem] md:text-[14rem] font-serif leading-none tracking-tighter text-black group-hover:text-transparent group-hover:stroke-[#dcff0d] group-hover:stroke-2 transition-all duration-500 bg-clip-text"
                             style={{ WebkitTextStroke: "0px black" }}
                         >
                             NO
