@@ -1,27 +1,41 @@
 import type { Metadata } from "next";
-import { Croissant_One, DM_Sans } from "next/font/google";
 import "./globals.css";
-
-const croissant = Croissant_One({
-  variable: "--font-croissant",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  display: "swap",
-});
+import { Toaster } from "sonner";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Narrative Artists | Amazon Creative Studio",
-  description: "Crafting stories buyers understand. We design Amazon A+ content, Brand Stores, and brand storytelling systems.",
+  title: "Writogram | Where Thoughts Find Their Voice",
+  description: siteConfig.description,
+  keywords: [
+    "Writogram",
+    "social platform for writing",
+    "writers community",
+    "poetry",
+    "storytelling",
+    "journaling",
+    "creative writing",
+    "creator partners",
+    "founding members"
+  ],
+  authors: [{ name: "Writogram" }],
+  creator: "Writogram",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: "Writogram | Where Thoughts Find Their Voice",
+    description: siteConfig.description,
+    siteName: "Writogram",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Writogram | Where Thoughts Find Their Voice",
+    description: siteConfig.description,
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
-
-import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -29,12 +43,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Mukta+Mahee:wght@200;300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
-        className={`${croissant.variable} ${dmSans.variable} font-sans antialiased text-gray-900 bg-white`}
+        suppressHydrationWarning
+        className="font-secondary antialiased text-[#191621] bg-[#FFFCFF] selection:bg-[#EDE5FF] selection:text-[#4520A8]"
       >
         {children}
-        <Toaster position="top-center" richColors />
+        <Toaster position="bottom-right" richColors />
       </body>
     </html>
   );

@@ -5,19 +5,24 @@ import dbConnect from "@/lib/db";
 import Post from "@/models/Post";
 
 async function getPosts() {
-    await dbConnect();
-    const posts = await Post.find({ status: 'published' })
-        .sort({ createdAt: -1 })
-        .lean();
+    const conn = await dbConnect();
+    if (!conn) return [];
+    try {
+        const posts = await Post.find({ status: 'published' })
+            .sort({ createdAt: -1 })
+            .lean();
 
-    return posts.map((post: any) => ({
-        category: post.category || "Uncategorized",
-        title: post.title,
-        date: new Date(post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
-        image: post.featuredImage || "/images/blog/store-anatomy.png", // Fallback
-        slug: post.slug,
-        readTime: "5 min read" // Placeholder calculation
-    }));
+        return posts.map((post: any) => ({
+            category: post.category || "Uncategorized",
+            title: post.title,
+            date: new Date(post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+            image: post.featuredImage || "/images/blog/store-anatomy.png", // Fallback
+            slug: post.slug,
+            readTime: "5 min read" // Placeholder calculation
+        }));
+    } catch {
+        return [];
+    }
 }
 
 export const dynamic = 'force-dynamic';

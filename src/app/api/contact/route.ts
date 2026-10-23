@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function POST(req: Request) {
     try {
@@ -20,6 +20,11 @@ export async function POST(req: Request) {
         const servicesHtml = services?.length
             ? `<p><strong>Services Interested:</strong> ${services.join(', ')}</p>`
             : '';
+
+        if (!resend) {
+            console.warn("RESEND_API_KEY is not set. Contact form submission received:", body);
+            return NextResponse.json({ success: true, message: "Submission logged (email sending disabled - no API key configured)" });
+        }
 
         const data = await resend.emails.send({
             from: 'Narrative Artists Contact <onboarding@resend.dev>', // Use verified domain in prod

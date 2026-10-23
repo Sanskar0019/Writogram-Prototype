@@ -1,114 +1,108 @@
 "use client";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+
+import Image from "next/image";
+import { ArrowUpRight, Instagram, Sparkles } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 export function Footer() {
-    return (
-        <footer className="bg-[#1A1A1A] text-white pt-20 md:pt-32 flex flex-col justify-between min-h-[80vh] relative overflow-hidden ">
+  const currentYear = new Date().getFullYear();
 
-            {/* Top Content */}
-            <div className="container mx-auto px-6 md:px-12 max-w-7xl mb-24 md:mb-32">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+  return (
+    <footer className="relative w-full bg-[#F5EFFB] text-[#191621] overflow-hidden pt-8 sm:pt-12 border-t border-[#E4D9FC]/70 selection:bg-[#EDE5FF] selection:text-[#4520A8]">
+      {/* Editorial Parchment Noise / Paper Texture Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(#6C3BFF_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.035] pointer-events-none" />
 
-                    {/* Brand Column */}
-                    <div className="md:col-span-4 flex flex-col justify-between h-full">
-                        <div>
-                            <h3 className="text-6xl font-serif text-white mb-2">Narrative Artists</h3>
-                            <p className="text-gray-500 text-sm max-w-xs">
-                                A creative studio shaping how brands are understood.
-                            </p>
-                        </div>
-                    </div>
+      {/* Editorial Headline & Story Presentation */}
+      <div className="max-w-4xl mx-auto px-6 text-center pt-16 sm:pt-24 pb-6 sm:pb-8 relative z-20">
+        {/* Issue Number Tag */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-[#E4D9FC] text-[10px] sm:text-xs font-secondary font-bold tracking-[0.2em] uppercase text-[#706A7C] mb-6 shadow-sm">
+          <Sparkles className="w-3 h-3 text-[#6C3BFF]" />
+          <span>WRITOGRAM &bull; ISSUE N&deg;01</span>
+        </div>
 
-                    {/* Navigation Columns */}
-                    <div className="md:col-span-2 space-y-6">
-                        <span className="text-xs uppercase tracking-widest text-[#555] block mb-6">Explore</span>
-                        <ul className="space-y-4">
-                            {["Work", "Brand Transformations", "Our Approach", "Services"].map((item) => (
-                                <li key={item}>
-                                    <Link href="#" className="text-gray-400 hover:text-[#dcff0d] transition-colors text-sm font-medium">
-                                        {item}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+        {/* Main Headline (Mukta Mahee bold + Kaushan Script cursive) */}
+        <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[5.5rem] tracking-tight leading-[1.08] text-[#191621] font-bold mb-6">
+          <span className="font-secondary block">The ideas worth</span>
+          <span className="font-primary font-normal text-[#6C3BFF] block mt-1 sm:mt-2 italic">
+            holding close.
+          </span>
+        </h2>
 
-                    <div className="md:col-span-2 space-y-6">
-                        <span className="text-xs uppercase tracking-widest text-[#555] block mb-6">Studio</span>
-                        <ul className="space-y-4">
-                            {["About", "Founder Note", "Insights"].map((item) => (
-                                <li key={item}>
-                                    <Link href="#" className="text-gray-400 hover:text-[#dcff0d] transition-colors text-sm font-medium">
-                                        {item}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+        {/* Supporting Editorial Paragraph */}
+        <p className="font-secondary text-sm sm:text-base md:text-lg text-[#5A5366] max-w-xl mx-auto leading-relaxed mb-8">
+          A calm social sanctuary where thoughts, poems, stories, and personal journals find an attentive audience without competing against dopamine loops and video feeds.
+        </p>
 
-                    {/* Contact Column */}
-                    <div className="md:col-span-4 flex flex-col items-start md:items-end text-left md:text-right">
-                        <span className="text-xs uppercase tracking-widest text-[#555] block mb-6 md:mb-8">Contact</span>
-                        <Link href="mailto:hello@narrativeartists.co" className="group flex items-center gap-2 text-2xl md:text-3xl font-serif hover:text-[#dcff0d] transition-colors mb-6">
-                            Start a conversation
-                            <ArrowUpRight className="w-5 h-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                        </Link>
-                        <p className="text-gray-500 text-sm mb-6">hello@narrativeartists.co</p>
+        {/* Action CTAs (No newsletter form) */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 mb-4">
+          <a
+            href={siteConfig.links.betaApp}
+            target="_blank"
+            rel="noopener noreferrer"
+            id="footer-access-beta-btn"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#191621] hover:bg-[#6C3BFF] text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-lg shadow-[#191621]/15 hover:shadow-xl transition-all duration-300 active:scale-95 cursor-pointer"
+          >
+            <span>Access Beta Now</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
 
-                        <div className="flex gap-6 mt-4">
-                            <Link href="#" className="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors">LinkedIn</Link>
-                            <Link href="#" className="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Instagram</Link>
-                        </div>
-                    </div>
+          <a
+            href={siteConfig.links.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/80 hover:bg-white text-[#191621] border border-[#E4D9FC] text-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition-all duration-300 hover:border-[#6C3BFF]"
+          >
+            <Instagram className="w-4 h-4 text-[#6C3BFF]" />
+            <span>Follow @writogram</span>
+          </a>
+        </div>
+      </div>
 
-                </div>
-            </div>
+      {/* =========================================================================
+          FULL-WIDTH ARTISTIC PORTRAIT (Edge-to-Edge like reference)
+          ========================================================================= */}
+      <div className="relative w-full h-[440px] sm:h-[520px] md:h-[620px] lg:h-[720px] overflow-hidden -mt-6 sm:-mt-10">
+        <Image
+          src="/footer-artistic-portrait.jpg"
+          alt="Artistic painting of contemplative thinker in lavender watercolor pool"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_35%]"
+        />
 
-            {/* Middle Statement */}
-            <div className="container mx-auto px-6 md:px-12 max-w-7xl mb-24 relative z-10">
-                <div className="border-t border-white/10 pt-12 md:pt-20 grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div>
-                        <p className="text-xl md:text-2xl font-serif leading-relaxed text-gray-200 mb-8 max-w-lg">
-                            We design Amazon A+ content, Brand Stores, and brand storytelling systems for teams that value clarity, structure, and thoughtful design.
-                        </p>
-                        <ul className="space-y-1 text-gray-500 text-sm">
-                            <li>No templates.</li>
-                            <li>No noise.</li>
-                            <li>Just work that respects attention.</li>
-                        </ul>
-                    </div>
-                    <div className="flex flex-col justify-end items-start md:items-end">
-                        <p className="text-sm text-gray-400 text-right italic mb-2">
-                            Amazon-focused. Brand-led. Intentionally restrained.
-                        </p>
-                        <p className="text-[10px] text-[#333] uppercase tracking-widest mt-8">
-                            Clarity is a choice.
-                        </p>
-                    </div>
-                </div>
-            </div>
+        {/* Seamless top blend with parchment background */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#F5EFFB] via-[#F5EFFB]/75 to-transparent pointer-events-none" />
 
-            {/* Bottom Brand Bar */}
-            <div className="w-full bg-[#1A1A1A] pt-4 pb-2 md:pt-6 md:pb-4 relative overflow-hidden group hover:bg-[#dcff0d] transition-colors duration-500">
-                {/* Legal Strip (Top of bar) */}
-                <div className="container mx-auto px-6 md:px-12 flex justify-between items-center text-[10px] md:text-xs font-sans font-bold text-gray-500 group-hover:text-black uppercase tracking-wider mb-2 md:mb-0 relative z-20 transition-colors duration-500">
-                    <div className="flex gap-4">
-                        <span>© Narrative Artists</span>
-                        <span className="hidden md:inline">All rights reserved.</span>
-                    </div>
-                    <div className="flex gap-6">
-                        <Link href="#" className="hover:underline">Privacy Policy</Link>
-                        <Link href="#" className="hover:underline">Terms</Link>
-                    </div>
-                </div>
+        {/* Bottom vignette over deep water to anchor the text */}
+        <div className="absolute inset-x-0 bottom-0 h-44 sm:h-36 bg-gradient-to-t from-[#191621]/95 via-[#191621]/60 to-transparent pointer-events-none" />
 
-                {/* Massive Text */}
-                <h1 className="text-[18vw] md:text-[18vw] leading-[0.75] font-black tracking-tighter text-white group-hover:text-black text-center select-none pointer-events-none transform translate-y-2 md:translate-y-4 transition-colors duration-500">
-                    NARRATIVE
-                </h1>
-            </div>
+        {/* Floating Bottom Bar Over the Water Surface */}
+        <div className="absolute bottom-5 sm:bottom-6 inset-x-0 max-w-7xl mx-auto px-5 sm:px-10 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4 text-xs text-white/95 font-secondary drop-shadow-md z-10 text-center sm:text-left">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-white">Writogram™</span>
+            <span>&bull;</span>
+            <span>&copy; {currentYear} All rights reserved.</span>
+          </div>
 
-        </footer>
-    );
+          <div className="font-primary text-base sm:text-xl text-[#EDE5FF] drop-shadow-lg">
+            &ldquo;Where thoughts find their voice.&rdquo;
+          </div>
+
+          <div className="flex items-center gap-5">
+            <a href="#what-is-writogram" className="hover:text-white transition-colors">
+              Top &uarr;
+            </a>
+            <span>&bull;</span>
+            <a
+              href={`mailto:${siteConfig.links.email}`}
+              className="hover:text-white transition-colors"
+            >
+              {siteConfig.links.email}
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }

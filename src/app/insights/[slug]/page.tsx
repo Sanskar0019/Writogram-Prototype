@@ -20,10 +20,15 @@ interface Props {
 }
 
 async function getPost(slug: string) {
-    await dbConnect();
-    const post = await Post.findOne({ slug, status: 'published' }).lean();
-    if (!post) return null;
-    return JSON.parse(JSON.stringify(post)); // Serialize
+    const conn = await dbConnect();
+    if (!conn) return null;
+    try {
+        const post = await Post.findOne({ slug, status: 'published' }).lean();
+        if (!post) return null;
+        return JSON.parse(JSON.stringify(post)); // Serialize
+    } catch {
+        return null;
+    }
 }
 
 // Generate SEO Metadata dynamically

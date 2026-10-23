@@ -1,38 +1,61 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #FDFCFB;
-  --color-foreground: #1A1A1A;
-  --color-accent: #dcff0d;
+  --color-primary-purple: #6C3BFF;
+  --color-deep-purple: #4520A8;
+  --color-soft-lavender: #EDE5FF;
+  --color-pale-lilac: #F7F3FF;
+  --color-ink-black: #191621;
+  --color-warm-white: #FFFCFF;
+  --color-muted-text: #706A7C;
+  --color-border-lavender: #E4D9FC;
+  --color-accent-violet: #8D5EFF;
 
-  /* Explicitly map font tokens */
-  --font-serif: var(--font-croissant);
-  --font-sans: var(--font-dm-sans);
+  --color-background: #FFFCFF;
+  --color-foreground: #191621;
 
-  /* Map mono to sans to prevent any accidental mono usage */
-  --font-mono: var(--font-dm-sans);
+  --font-primary: 'Kaushan Script', cursive, sans-serif;
+  --font-secondary: 'Mukta Mahee', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-script: 'Kaushan Script', cursive, sans-serif;
+  --font-serif: 'Mukta Mahee', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Mukta Mahee', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Mukta Mahee', monospace;
 }
 
 :root {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  /* Force default font to DM Sans */
-  font-family: var(--font-dm-sans);
+  --primary-purple: #6C3BFF;
+  --deep-purple: #4520A8;
+  --soft-lavender: #EDE5FF;
+  --pale-lilac: #F7F3FF;
+  --ink-black: #191621;
+  --warm-white: #FFFCFF;
+  --muted-text: #706A7C;
+  --border-lavender: #E4D9FC;
 }
 
-/* Force headings to Serif (Croissant One) */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-croissant);
-  font-weight: 400;
-  /* Croissant One is typically 400 */
+/* Base typography and layout rules */
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  scroll-behavior: smooth;
 }
 
-/* Force body and interactive elements to Sans (DM Sans) */
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  background-color: var(--warm-white);
+  color: var(--ink-black);
+  font-family: 'Mukta Mahee', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-script,
+.font-kaushan,
+.font-primary {
+  font-family: 'Kaushan Script', cursive, sans-serif !important;
+}
+
 body,
 p,
 span,
@@ -41,16 +64,94 @@ a,
 button,
 input,
 textarea,
-select {
-  font-family: var(--font-dm-sans);
+select,
+.font-mukta,
+.font-secondary {
+  font-family: 'Mukta Mahee', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Exception: Classes that explicitly ask for Serif */
-.font-serif {
-  font-family: var(--font-croissant) !important;
+/* Custom literary styles & aesthetic micro-utilities */
+.purple-gradient-hero {
+  background: radial-gradient(circle at 50% 0%, rgba(108, 59, 255, 0.08) 0%, rgba(237, 229, 255, 0.4) 40%, rgba(255, 252, 255, 1) 100%);
 }
 
-/* Exception: Classes that explicitly ask for Sans */
-.font-sans {
-  font-family: var(--font-dm-sans) !important;
+.purple-glow-soft {
+  box-shadow: 0 10px 40px -10px rgba(108, 59, 255, 0.15);
+}
+
+.purple-glow-strong {
+  box-shadow: 0 20px 50px -10px rgba(69, 32, 168, 0.35);
+}
+
+.paper-texture {
+  background-color: #FFFCFF;
+  background-image: radial-gradient(rgba(108, 59, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Smooth focus rings for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #6C3BFF;
+  outline-offset: 2px;
+}
+
+/* Spin animation for rotating badge */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Subtle cinematic zoom & pan for hero background visual */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1) translate(0%, 0%);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, -0.5%);
+  }
+  100% {
+    transform: scale(1) translate(0%, 0%);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Atmospheric floating drift */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.8;
+  }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

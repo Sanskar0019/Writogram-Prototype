@@ -1,6 +1,7 @@
 import type { NextAuthConfig } from 'next-auth';
 
 export const authConfig = {
+    secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET || 'writogram_beta_dev_secret_key_32bytes_minimum',
     pages: {
         signIn: '/admin/login',
     },
